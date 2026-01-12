@@ -11,7 +11,7 @@ const faqs = [
       "Only for the cleanup phase. The audit is completely read-only—we scan your usage patterns and query logs without making any changes. For the cleanup, we work via Data Collection Rules (DCRs), which require write access to your Sentinel workspace.",
   },
   {
-    question: "Will we lose data?",
+    question: "Will I lose data?",
     answer:
       "Only data you haven't queried in 90+ days. We analyze your query patterns and only recommend removing columns and tables that show zero usage over a 90-day window. Critical security data is never touched.",
   },

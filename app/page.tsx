@@ -6,7 +6,6 @@ import BentoGrid from "./components/BentoGrid";
 import Timeline from "./components/Timeline";
 import CaseStudies from "./components/CaseStudies";
 import PricingSection from "./components/PricingSection";
-import Testimonials from "./components/Testimonials";
 import FAQ from "./components/FAQ";
 import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
@@ -23,7 +22,6 @@ export default function Home() {
       <Timeline />
       <CaseStudies />
       <PricingSection />
-      <Testimonials />
       <FAQ />
       <ContactForm />
       <Footer />

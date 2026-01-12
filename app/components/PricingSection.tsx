@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, ArrowRight } from "lucide-react";
+import { Check } from "lucide-react";
 
 const pricingPlans = [
   {
-    name: "The Audit",
-    subtitle: "The Blueprint",
-    price: "£795",
-    description: "Comprehensive read-only analysis of your Azure Sentinel ingestion",
+    name: "Audit",
+    subtitle: "The Report",
+    price: "£995",
+    description: "One-time, Read-only comprehensive analysis",
     features: [
       "Full ingestion pattern analysis",
       "Query log review (90-day window)",
@@ -21,10 +21,10 @@ const pricingPlans = [
     popular: false,
   },
   {
-    name: "The Cleanup",
+    name: "Cleanup",
     subtitle: "The Fix",
-    price: "£3,840",
-    description: "Implementation and optimization of recommended changes",
+    price: "£4,800",
+    description: "Implementation + 30-day warranty",
     features: [
       "Ingestion pipeline optimization",
       "Column and table removal via DCRs",
@@ -37,10 +37,10 @@ const pricingPlans = [
     popular: true,
   },
   {
-    name: "Retainer",
-    subtitle: "The Watchtower",
-    price: "£1,200/mo",
-    description: "Ongoing optimization and monitoring",
+    name: "Watchtower",
+    subtitle: "The Retainer",
+    price: "£1,500/mo",
+    description: "Monthly tuning & monitoring",
     features: [
       "Monthly cost reviews",
       "Continuous alert tuning",
@@ -87,17 +87,17 @@ export default function PricingSection() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className={`relative glass rounded-xl p-8 border ${
                 plan.popular
-                  ? "border-[#45A29E]/50 glow-teal md:-mt-4 md:mb-4"
+                  ? "border-[#14B8A6]/50 glow-teal md:-mt-4 md:mb-4"
                   : "border-white/10"
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#45A29E] text-white px-4 py-1 rounded-full text-sm font-semibold font-mono">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#14B8A6] text-white px-4 py-1 rounded-full text-sm font-semibold font-mono">
                   Most Popular
                 </div>
               )}
               <div className="text-center mb-8">
-                <div className="text-sm text-[#45A29E] font-mono mb-2">
+                <div className="text-sm text-[#14B8A6] font-mono mb-2">
                   {plan.subtitle}
                 </div>
                 <h3 className="text-3xl font-bold font-mono text-white mb-2">
@@ -112,7 +112,7 @@ export default function PricingSection() {
               <ul className="space-y-4 mb-8">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
-                    <Check className="h-5 w-5 text-[#45A29E] flex-shrink-0 mt-0.5" />
+                    <Check className="h-5 w-5 text-[#14B8A6] flex-shrink-0 mt-0.5" />
                     <span className="text-slate-300 text-sm">{feature}</span>
                   </li>
                 ))}
@@ -124,7 +124,7 @@ export default function PricingSection() {
                 whileTap={{ scale: 0.95 }}
                 className={`block w-full text-center py-3 px-6 rounded-lg font-semibold transition-colors ${
                   plan.popular
-                    ? "bg-[#45A29E] hover:bg-[#3d8d89] text-white"
+                    ? "bg-[#14B8A6] hover:bg-[#0d9488] text-white"
                     : "bg-white/5 hover:bg-white/10 text-white border border-white/10"
                 }`}
                 aria-label={`${plan.cta} for ${plan.name}`}
