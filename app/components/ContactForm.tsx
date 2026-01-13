@@ -2,7 +2,10 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Send, Mail, Building, MessageSquare } from "lucide-react";
+import { Send, Mail, Building, MessageSquare, CheckCircle2, AlertCircle } from "lucide-react";
+
+// Formspree form ID - update this if you need to change it
+const FORMSPREE_ID = "mreegrvk";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -11,14 +14,41 @@ export default function ContactForm() {
     company: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In production, this would send to your backend/email service
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          message: formData.message,
+        }),
+      });
+
+      if (response.ok) {
+        setIsSuccess(true);
+        setFormData({ name: "", email: "", company: "", message: "" });
+      } else {
+        const data = await response.json();
+        setError(data.error || "Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -46,16 +76,20 @@ export default function ContactForm() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="glass rounded-xl border border-white/10 p-8 md:p-12"
         >
-          {submitted ? (
-            <div className="text-center py-8">
-              <div className="text-[#45A29E] text-6xl mb-4">✓</div>
+          {isSuccess ? (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="text-center py-8"
+            >
+              <CheckCircle2 className="h-16 w-16 text-[#14B8A6] mx-auto mb-4" />
               <h3 className="text-2xl font-bold font-mono text-white mb-2">
                 Thank You!
               </h3>
               <p className="text-slate-300">
                 We'll get back to you within 24 hours.
               </p>
-            </div>
+            </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
@@ -74,7 +108,8 @@ export default function ContactForm() {
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#45A29E] transition-colors"
+                    disabled={isLoading}
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#14B8A6] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="John Doe"
                   />
                 </div>
@@ -95,7 +130,8 @@ export default function ContactForm() {
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
                       }
-                      className="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#45A29E] transition-colors"
+                      disabled={isLoading}
+                      className="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#14B8A6] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       placeholder="john@company.com"
                     />
                   </div>
@@ -117,7 +153,8 @@ export default function ContactForm() {
                     onChange={(e) =>
                       setFormData({ ...formData, company: e.target.value })
                     }
-                    className="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#45A29E] transition-colors"
+                    disabled={isLoading}
+                    className="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#14B8A6] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="Your Company Ltd"
                   />
                 </div>
@@ -139,19 +176,42 @@ export default function ContactForm() {
                     onChange={(e) =>
                       setFormData({ ...formData, message: e.target.value })
                     }
-                    className="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#45A29E] transition-colors resize-none"
+                    disabled={isLoading}
+                    className="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#14B8A6] transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="Tell us about your Azure Sentinel setup and cost concerns..."
                   />
                 </div>
               </div>
+              
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center gap-2 text-[#EF4444] text-sm bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-lg p-3"
+                >
+                  <AlertCircle className="h-5 w-5 flex-shrink-0" />
+                  <span>{error}</span>
+                </motion.div>
+              )}
+
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full bg-[#EF4444] hover:bg-[#dc2626] text-white px-8 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 glow-red"
+                disabled={isLoading}
+                whileHover={!isLoading ? { scale: 1.02 } : {}}
+                whileTap={!isLoading ? { scale: 0.98 } : {}}
+                className="w-full bg-[#EF4444] hover:bg-[#dc2626] disabled:bg-[#EF4444]/50 disabled:cursor-not-allowed text-white px-8 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 glow-red"
               >
-                <Send className="h-5 w-5" />
-                Book Free Consultation
+                {isLoading ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="h-5 w-5" />
+                    Book Free Consultation
+                  </>
+                )}
               </motion.button>
             </form>
           )}
