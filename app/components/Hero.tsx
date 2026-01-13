@@ -8,26 +8,27 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-slate-950">
       {/* Subtle animated glowing grid pattern */}
-      <div className="absolute inset-0 opacity-[0.02]">
+      <div className="absolute inset-0 opacity-[0.015]">
         <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(rgba(239, 68, 68, 0.2) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(239, 68, 68, 0.2) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(rgba(239, 68, 68, 0.15) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(239, 68, 68, 0.15) 1px, transparent 1px)`,
           backgroundSize: '60px 60px',
         }} />
       </div>
       
       {/* Radial gradient glow at top center */}
-      <div className="absolute inset-0 bg-gradient-radial from-red-500/5 via-transparent to-transparent opacity-40" />
+      <div className="absolute inset-0 bg-gradient-radial from-red-500/3 via-transparent to-transparent opacity-30" />
 
-      <div className="relative z-10 max-w-7xl mx-auto w-full">
+      <div className="relative z-10 max-w-7xl mx-auto w-full py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left: Copy - Vertically Centered */}
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center px-4 lg:px-0">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="text-5xl md:text-6xl font-bold font-sans text-white mb-6 leading-tight tracking-tight"
+              style={{ letterSpacing: '-0.02em' }}
             >
               Stop paying for Azure Sentinel logs{" "}
               <span className="bg-gradient-to-r from-red-500 via-red-600 to-purple-600 bg-clip-text text-transparent">
@@ -68,8 +69,8 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right: Calculator - Centered */}
-          <div className="flex items-center justify-center">
+          {/* Right: Calculator - Centered as Product Shot */}
+          <div className="flex items-center justify-center px-4 lg:px-0">
             <CostCalculator />
           </div>
         </div>
