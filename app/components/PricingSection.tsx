@@ -5,10 +5,10 @@ import { Check } from "lucide-react";
 
 const pricingPlans = [
   {
-    name: "Audit",
-    subtitle: "The Report",
-    price: "£995",
-    description: "One-time, Read-only comprehensive analysis",
+    name: "The Deep Dive Audit",
+    subtitle: "One-time comprehensive analysis",
+    price: "£495",
+    description: "Money-back guarantee if we don't find savings",
     features: [
       "Full ingestion pattern analysis",
       "Query log review (90-day window)",
@@ -17,37 +17,38 @@ const pricingPlans = [
       "Detailed recommendations report",
       "48-hour delivery",
     ],
-    cta: "Get Started",
+    cta: "Book Audit",
     popular: false,
   },
   {
-    name: "Cleanup",
-    subtitle: "The Fix",
-    price: "£4,800",
-    description: "Implementation + 30-day warranty",
+    name: "The Fix",
+    subtitle: "Typically 20% of your first year's savings",
+    price: "Custom Quote",
+    description: "Full implementation with safe deployment",
     features: [
+      "Full implementation",
+      "Safe deployment (Validation Phase)",
       "Ingestion pipeline optimization",
       "Column and table removal via DCRs",
       "Alert rule tuning",
-      "Executive dashboard setup",
       "30-day monitoring",
-      "Guaranteed cost reduction",
     ],
-    cta: "Book Now",
+    cta: "Request Quote",
     popular: true,
   },
   {
-    name: "Watchtower",
-    subtitle: "The Retainer",
-    price: "£1,500/mo",
-    description: "Monthly tuning & monitoring",
+    name: "6-Month Checkup",
+    subtitle: "Prevent ingestion drift",
+    price: "£995",
+    priceSuffix: "/ checkup",
+    description: "Bi-annual health check to keep costs optimized",
     features: [
-      "Monthly cost reviews",
-      "Continuous alert tuning",
-      "New ingestion pattern analysis",
-      "Priority support",
-      "Quarterly optimization reports",
-      "Cost reduction guarantee",
+      "Ingestion pattern review",
+      "Cost drift analysis",
+      "Alert rule optimization",
+      "New data source evaluation",
+      "Executive summary report",
+      "Recommendations for next phase",
     ],
     cta: "Contact Sales",
     popular: false,
@@ -103,8 +104,19 @@ export default function PricingSection() {
                 <h3 className="text-3xl font-bold font-mono text-white mb-2">
                   {plan.name}
                 </h3>
-                <div className="text-4xl font-bold font-mono text-white mb-2">
-                  {plan.price}
+                <div className="mb-2">
+                  {plan.price === "Custom Quote" ? (
+                    <div className="text-5xl font-bold font-mono text-[#14B8A6] glow-teal">
+                      {plan.price}
+                    </div>
+                  ) : (
+                    <div className="text-4xl font-bold font-mono text-white">
+                      {plan.price}
+                      {plan.priceSuffix && (
+                        <span className="text-2xl text-slate-400">{plan.priceSuffix}</span>
+                      )}
+                    </div>
+                  )}
                 </div>
                 <p className="text-slate-400 text-sm">{plan.description}</p>
               </div>
