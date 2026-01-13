@@ -8,67 +8,70 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-slate-950">
       {/* Subtle animated glowing grid pattern */}
-      <div className="absolute inset-0 opacity-[0.03]">
+      <div className="absolute inset-0 opacity-[0.02]">
         <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(rgba(239, 68, 68, 0.3) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(239, 68, 68, 0.3) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(rgba(239, 68, 68, 0.2) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(239, 68, 68, 0.2) 1px, transparent 1px)`,
           backgroundSize: '60px 60px',
-          animation: 'gridMove 20s linear infinite'
         }} />
       </div>
       
       {/* Radial gradient glow at top center */}
-      <div className="absolute inset-0 bg-gradient-radial from-red-500/10 via-transparent to-transparent opacity-60" />
+      <div className="absolute inset-0 bg-gradient-radial from-red-500/5 via-transparent to-transparent opacity-40" />
 
-      <div className="relative z-10 max-w-7xl mx-auto pt-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left: Copy */}
-          <div className="text-center lg:text-left">
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Left: Copy - Vertically Centered */}
+          <div className="flex flex-col justify-center">
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-6xl md:text-7xl lg:text-8xl font-bold font-mono text-white mb-6 leading-tight"
+              className="text-5xl md:text-6xl font-bold font-sans text-white mb-6 leading-tight tracking-tight"
             >
               Stop paying for Azure Sentinel logs{" "}
-              <span className="text-red-500">you never read</span>.
+              <span className="bg-gradient-to-r from-red-500 via-red-600 to-purple-600 bg-clip-text text-transparent">
+                you never read
+              </span>.
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-2xl md:text-3xl text-slate-300 mb-8 leading-relaxed"
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-xl md:text-2xl text-slate-400 mb-8 leading-relaxed font-sans"
             >
               We filter the noise.{" "}
-              <span className="text-red-500 font-semibold">You save 30%</span>.
+              <span className="text-slate-300 font-medium">You save 30%</span>.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="space-y-4 flex flex-col items-center lg:items-start"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="space-y-4"
             >
               <motion.a
                 href="#contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all shadow-lg shadow-red-500/50"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-lg shadow-red-500/30 font-sans"
               >
                 Book Your Audit
-                <ArrowRight className="h-5 w-5" />
+                <ArrowRight className="h-4 w-4" />
               </motion.a>
               
-              <div className="flex items-center gap-2 text-slate-400 text-sm">
+              <div className="flex items-center gap-2 text-slate-500 text-sm font-sans">
                 <Shield className="h-4 w-4 text-red-500" />
                 <span>Non-intrusive read-only assessment</span>
               </div>
             </motion.div>
           </div>
 
-          {/* Right: Calculator */}
-          <CostCalculator />
+          {/* Right: Calculator - Centered */}
+          <div className="flex items-center justify-center">
+            <CostCalculator />
+          </div>
         </div>
       </div>
     </section>
