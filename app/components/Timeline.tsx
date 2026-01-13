@@ -9,27 +9,27 @@ const steps = [
     title: "Read-Only Audit",
     description: "We scan your usage patterns, query logs, and ingestion metrics. Zero access required.",
     icon: FileSearch,
-    color: "text-[#45A29E]",
+    color: "text-red-500",
   },
   {
     number: "02",
     title: "The Proposal",
     description: "You receive a detailed blueprint showing exactly what's waste and projected savings.",
     icon: FileText,
-    color: "text-[#EF4444]",
+    color: "text-red-500",
   },
   {
     number: "03",
     title: "The Cleanup",
     description: "We apply the filters via DCRs. Your data stream becomes lean, your alerts become relevant.",
     icon: Wrench,
-    color: "text-[#45A29E]",
+    color: "text-red-500",
   },
 ];
 
 export default function Timeline() {
   return (
-    <section id="process" className="py-24 px-4 sm:px-6 lg:px-8 relative">
+    <section id="process" className="py-24 px-4 sm:px-6 lg:px-8 relative bg-slate-950">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -41,14 +41,14 @@ export default function Timeline() {
           <h2 className="text-4xl md:text-5xl font-bold font-mono text-white mb-4">
             How It Works
           </h2>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
             Three simple steps from audit to optimization.
           </p>
         </motion.div>
 
         <div className="relative">
           {/* Vertical line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#45A29E] via-[#EF4444] to-[#45A29E] transform md:-translate-x-1/2" />
+          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-red-500 via-red-600 to-red-500 transform md:-translate-x-1/2" />
 
           <div className="space-y-12">
             {steps.map((step, index) => {
@@ -68,14 +68,14 @@ export default function Timeline() {
                 >
                   {/* Icon circle */}
                   <div className="relative z-10 flex-shrink-0">
-                    <div className="glass rounded-full p-4 border border-white/10">
+                    <div className="bg-slate-900/50 backdrop-blur-md rounded-full p-4 border border-slate-800">
                       <Icon className={`h-8 w-8 ${step.color}`} />
                     </div>
                   </div>
 
                   {/* Content card */}
                   <div
-                    className={`flex-1 glass rounded-xl p-8 border border-white/10 ${
+                    className={`flex-1 bg-slate-900/50 backdrop-blur-md rounded-xl p-8 border border-slate-800 ${
                       isEven ? "md:ml-auto md:w-5/12" : "md:mr-auto md:w-5/12"
                     }`}
                   >

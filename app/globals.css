@@ -22,7 +22,9 @@ html {
 }
 
 body {
-  background: linear-gradient(180deg, var(--background-start) 0%, var(--background-end) 100%);
+  background: #0f172a; /* slate-950 */
+  background-image: radial-gradient(circle at top center, rgba(239, 68, 68, 0.1) 0%, transparent 50%);
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, sans-serif;
   min-height: 100vh;
@@ -34,10 +36,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Glassmorphism utility */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.5); /* slate-900/50 */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(30, 41, 59, 0.8); /* slate-800 */
 }
 
 /* Radial gradient utility */
@@ -70,4 +72,14 @@ h1, h2, h3, h4, h5, h6 {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #2a3441;
+}
+
+/* Grid animation */
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(60px, 60px);
+  }
 }

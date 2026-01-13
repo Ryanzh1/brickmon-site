@@ -4,11 +4,11 @@ import { Mail, Github, Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 py-12 px-4 sm:px-6 lg:px-8">
+    <footer className="border-t border-slate-800 py-12 px-4 sm:px-6 lg:px-8 bg-slate-950">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
-            <h3 className="text-2xl font-bold font-mono text-white mb-4 tracking-wider">
+            <h3 className="text-2xl font-bold font-mono text-white mb-4 tracking-widest">
               BRICKMON
             </h3>
             <p className="text-slate-400 text-sm">
@@ -84,7 +84,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 text-center text-slate-400 text-sm">
+        <div className="border-t border-slate-800 pt-8 text-center text-slate-400 text-sm">
           <p>&copy; {new Date().getFullYear()} Brickmon. All rights reserved.</p>
         </div>
       </div>

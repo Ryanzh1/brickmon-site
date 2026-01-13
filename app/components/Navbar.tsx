@@ -8,8 +8,8 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-4 left-4 right-4 z-50 max-w-7xl mx-auto">
+      <div className="bg-slate-900/50 backdrop-blur-md border border-slate-800 rounded-xl px-4 sm:px-6 lg:px-8 shadow-2xl">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <motion.div
@@ -18,7 +18,7 @@ export default function Navbar() {
             transition={{ duration: 0.5 }}
             className="flex-shrink-0"
           >
-            <a href="#" className="text-2xl font-bold font-mono text-white tracking-wider" aria-label="Brickmon Home">
+            <a href="#" className="text-2xl font-bold font-mono text-white tracking-widest" aria-label="Brickmon Home">
               BRICKMON
             </a>
           </motion.div>
@@ -47,10 +47,10 @@ export default function Navbar() {
               FAQ
             </a>
             <motion.a
-              href="#pricing"
+              href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-[#EF4444] hover:bg-[#dc2626] text-white px-6 py-2 rounded-lg font-semibold transition-colors"
+              className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg shadow-red-500/50"
             >
               Book Audit
             </motion.a>
@@ -77,7 +77,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden py-4 space-y-4"
+            className="md:hidden py-4 space-y-4 border-t border-slate-800 mt-4"
           >
             <a
               href="#services"
@@ -85,13 +85,6 @@ export default function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Services
-            </a>
-            <a
-              href="#process"
-              className="block text-slate-300 hover:text-white transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Process
             </a>
             <a
               href="#pricing"
@@ -108,8 +101,8 @@ export default function Navbar() {
               FAQ
             </a>
             <a
-              href="#pricing"
-              className="block bg-[#EF4444] hover:bg-[#dc2626] text-white px-6 py-2 rounded-lg font-semibold text-center transition-colors"
+              href="#contact"
+              className="block bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 py-2.5 rounded-full font-semibold text-center transition-all"
               onClick={() => setMobileMenuOpen(false)}
             >
               Book Audit

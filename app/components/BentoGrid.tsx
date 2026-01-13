@@ -10,7 +10,6 @@ const features = [
     description: "We identify columns you haven't queried in 90 days.",
     icon: Scissors,
     size: "large",
-    gradient: "from-red-500/20 to-transparent",
   },
   {
     id: 2,
@@ -18,7 +17,6 @@ const features = [
     description: "Silence false positives and alert fatigue.",
     icon: BellOff,
     size: "small",
-    gradient: "from-yellow-500/20 to-transparent",
   },
   {
     id: 3,
@@ -26,7 +24,6 @@ const features = [
     description: "C-Suite ready visualizations.",
     icon: BarChart3,
     size: "small",
-    gradient: "from-blue-500/20 to-transparent",
   },
   {
     id: 4,
@@ -34,16 +31,12 @@ const features = [
     description: "We use DCRs (Data Collection Rules) to filter at the source.",
     icon: Code,
     size: "medium",
-    gradient: "from-teal-500/20 to-transparent",
   },
 ];
 
 export default function BentoGrid() {
   return (
-    <section id="services" className="py-24 px-4 sm:px-6 lg:px-8 relative">
-      {/* Subtle glow behind section */}
-      <div className="absolute inset-0 bg-gradient-radial from-[#14B8A6]/5 via-transparent to-transparent opacity-50" />
-      
+    <section id="services" className="py-24 px-4 sm:px-6 lg:px-8 relative bg-slate-950">
       <div className="relative z-10 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -55,7 +48,7 @@ export default function BentoGrid() {
           <h2 className="text-4xl md:text-5xl font-bold font-mono text-white mb-4">
             How We Optimize
           </h2>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
             Four core capabilities that transform your Sentinel spend into
             strategic value.
           </p>
@@ -80,15 +73,13 @@ export default function BentoGrid() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`glass rounded-xl p-8 border border-white/10 hover:border-[#14B8A6]/50 transition-all ${colSpan} ${rowSpan} relative overflow-hidden group h-full`}
+                className={`bg-slate-900/50 backdrop-blur-md rounded-xl p-8 border border-slate-800 hover:border-red-500/50 transition-all ${colSpan} ${rowSpan} relative overflow-hidden group h-full shadow-xl`}
+                style={{
+                  boxShadow: "0 10px 40px rgba(0, 0, 0, 0.3)",
+                }}
               >
-                {/* Gradient background */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-100 transition-opacity`}
-                />
-                
                 <div className="relative z-10">
-                  <div className="text-[#14B8A6] mb-4">
+                  <div className="text-red-500 mb-4 group-hover:scale-110 transition-transform">
                     <Icon className="h-10 w-10" />
                   </div>
                   <h3 className="text-2xl font-bold font-mono text-white mb-3">
@@ -108,7 +99,7 @@ export default function BentoGrid() {
                           whileInView={{ height }}
                           viewport={{ once: true }}
                           transition={{ delay: 0.5 + i * 0.1 }}
-                          className="flex-1 bg-gradient-to-t from-[#EF4444] to-[#14B8A6] rounded-t"
+                          className="flex-1 bg-gradient-to-t from-red-500 to-red-600 rounded-t"
                         />
                       ))}
                     </div>

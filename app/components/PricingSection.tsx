@@ -57,9 +57,9 @@ const pricingPlans = [
 
 export default function PricingSection() {
   return (
-    <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8 relative">
-      {/* Glow effect */}
-      <div className="absolute inset-0 bg-gradient-radial from-[#EF4444]/5 via-transparent to-transparent opacity-30" />
+    <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8 relative bg-slate-950">
+      {/* Subtle radial gradient background */}
+      <div className="absolute inset-0 bg-gradient-radial from-slate-900 via-slate-950 to-slate-950 opacity-50" />
       
       <div className="relative z-10 max-w-7xl mx-auto">
         <motion.div
@@ -72,13 +72,13 @@ export default function PricingSection() {
           <h2 className="text-4xl md:text-5xl font-bold font-mono text-white mb-4">
             Pricing
           </h2>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
             Start with an audit, then decide if you want us to handle the
             cleanup.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
           {pricingPlans.map((plan, index) => (
             <motion.div
               key={plan.name}
@@ -86,58 +86,103 @@ export default function PricingSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`relative glass rounded-xl p-8 border ${
+              className={`relative rounded-xl p-8 ${
                 plan.popular
-                  ? "border-[#14B8A6]/50 glow-teal md:-mt-4 md:mb-4"
-                  : "border-white/10"
-              }`}
+                  ? "md:scale-105 md:-mt-6 md:mb-6 bg-slate-900/80 border-2"
+                  : "bg-slate-900/60 border border-slate-800"
+              } ${
+                plan.popular
+                  ? "border-transparent bg-gradient-to-br from-slate-900 via-slate-900 to-slate-900"
+                  : ""
+              } shadow-2xl backdrop-blur-sm`}
+              style={
+                plan.popular
+                  ? {
+                      borderImage: "linear-gradient(135deg, rgba(239, 68, 68, 0.5), rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.5)) 1",
+                      boxShadow: "0 0 40px rgba(239, 68, 68, 0.2), 0 20px 60px rgba(0, 0, 0, 0.5)",
+                    }
+                  : {
+                      boxShadow: "0 10px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 0, 0, 0.2)",
+                    }
+              }
             >
+              {/* Gradient border effect for popular card */}
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#14B8A6] text-white px-4 py-1 rounded-full text-sm font-semibold font-mono">
-                  Most Popular
-                </div>
+                <>
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-red-500/20 via-transparent to-red-500/10 opacity-50 -z-10 blur-xl" />
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#EF4444] to-[#dc2626] text-white px-6 py-1.5 rounded-full text-xs font-bold font-mono tracking-wider shadow-lg shadow-red-500/50">
+                    RECOMMENDED
+                  </div>
+                </>
               )}
+
               <div className="text-center mb-8">
-                <div className="text-sm text-[#14B8A6] font-mono mb-2">
+                <div className="text-xs text-slate-400 font-mono mb-3 uppercase tracking-wider">
                   {plan.subtitle}
                 </div>
-                <h3 className="text-3xl font-bold font-mono text-white mb-2">
+                <h3 className="text-2xl font-bold font-mono text-white mb-6">
                   {plan.name}
                 </h3>
-                <div className="mb-2">
+                
+                {/* Price Display */}
+                <div className="mb-4">
                   {plan.price === "Custom Quote" ? (
-                    <div className="text-5xl font-bold font-mono text-[#14B8A6] glow-teal">
-                      {plan.price}
+                    <div className="text-6xl font-extrabold font-mono text-white mb-2 leading-none">
+                      {plan.price.split(" ").map((word, i) => (
+                        <div key={i} className="bg-gradient-to-r from-white via-slate-100 to-white bg-clip-text text-transparent">
+                          {word}
+                        </div>
+                      ))}
                     </div>
                   ) : (
-                    <div className="text-4xl font-bold font-mono text-white">
+                    <div className="text-6xl font-extrabold font-mono text-white mb-2 leading-none">
                       {plan.price}
                       {plan.priceSuffix && (
-                        <span className="text-2xl text-slate-400">{plan.priceSuffix}</span>
+                        <span className="text-2xl text-slate-500 font-normal ml-2">
+                          {plan.priceSuffix}
+                        </span>
                       )}
                     </div>
                   )}
                 </div>
-                <p className="text-slate-400 text-sm">{plan.description}</p>
+                
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  {plan.description}
+                </p>
               </div>
 
-              <ul className="space-y-4 mb-8">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3">
-                    <Check className="h-5 w-5 text-[#14B8A6] flex-shrink-0 mt-0.5" />
-                    <span className="text-slate-300 text-sm">{feature}</span>
-                  </li>
+              {/* Features List */}
+              <ul className="space-y-4 mb-8 min-h-[280px]">
+                {plan.features.map((feature, featureIndex) => (
+                  <motion.li
+                    key={feature}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: featureIndex * 0.05 }}
+                    className="flex items-start gap-3"
+                  >
+                    <div className="flex-shrink-0 mt-0.5">
+                      <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#EF4444] to-[#dc2626] flex items-center justify-center shadow-lg shadow-red-500/50">
+                        <Check className="h-3 w-3 text-white stroke-[3]" />
+                      </div>
+                    </div>
+                    <span className="text-slate-300 text-sm leading-relaxed">
+                      {feature}
+                    </span>
+                  </motion.li>
                 ))}
               </ul>
 
+              {/* CTA Button */}
               <motion.a
                 href="#contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`block w-full text-center py-3 px-6 rounded-lg font-semibold transition-colors ${
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className={`block w-full text-center py-4 px-6 rounded-lg font-bold font-mono text-sm uppercase tracking-wider transition-all ${
                   plan.popular
-                    ? "bg-[#14B8A6] hover:bg-[#0d9488] text-white"
-                    : "bg-white/5 hover:bg-white/10 text-white border border-white/10"
+                    ? "bg-gradient-to-r from-[#EF4444] to-[#dc2626] hover:from-[#dc2626] hover:to-[#b91c1c] text-white shadow-lg shadow-red-500/50"
+                    : "bg-slate-800/80 hover:bg-slate-800 text-white border border-slate-700 hover:border-slate-600"
                 }`}
                 aria-label={`${plan.cta} for ${plan.name}`}
               >

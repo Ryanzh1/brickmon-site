@@ -23,7 +23,7 @@ const credentials = [
 
 export default function TrustBar() {
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 border-y border-white/10">
+    <section className="py-12 px-4 sm:px-6 lg:px-8 border-y border-slate-800 bg-slate-950">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
@@ -50,10 +50,10 @@ export default function TrustBar() {
                 transition={{ delay: index * 0.1 }}
                 className="flex items-center gap-3 text-slate-300"
               >
-                <Icon className="h-5 w-5 text-[#45A29E]" />
+                <Icon className="h-5 w-5 text-red-500" />
                 <div className="text-sm">
                   <span>{cred.text} </span>
-                  <span className="text-[#45A29E] font-semibold">
+                  <span className="text-red-500 font-semibold">
                     {cred.highlight}
                   </span>
                 </div>

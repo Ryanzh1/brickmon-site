@@ -23,7 +23,7 @@ const badges = [
 
 export default function SecurityBadges() {
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 border-y border-white/10">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 border-y border-slate-800 bg-slate-950">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {badges.map((badge, index) => {
@@ -37,7 +37,7 @@ export default function SecurityBadges() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="flex items-start gap-4"
               >
-                <div className="text-[#45A29E] flex-shrink-0">
+                <div className="text-red-500 flex-shrink-0">
                   <Icon className="h-8 w-8" />
                 </div>
                 <div>

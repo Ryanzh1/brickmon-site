@@ -9,30 +9,27 @@ const caseStudies = [
     metric: "42%",
     label: "Cost Reduction",
     description: "Average savings across all clients in the first quarter",
-    color: "text-[#45A29E]",
+    color: "text-green-500",
   },
   {
     icon: Database,
     metric: "847",
     label: "Unused Columns Removed",
     description: "Average number of columns pruned per enterprise client",
-    color: "text-[#EF4444]",
+    color: "text-red-500",
   },
   {
     icon: AlertCircle,
     metric: "73%",
     label: "False Positive Reduction",
     description: "Average decrease in noisy alerts after tuning",
-    color: "text-[#45A29E]",
+    color: "text-green-500",
   },
 ];
 
 export default function CaseStudies() {
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 relative">
-      {/* Subtle glow */}
-      <div className="absolute inset-0 bg-gradient-radial from-[#EF4444]/5 via-transparent to-transparent opacity-30" />
-      
+    <section className="py-24 px-4 sm:px-6 lg:px-8 relative bg-slate-950">
       <div className="relative z-10 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -44,7 +41,7 @@ export default function CaseStudies() {
           <h2 className="text-4xl md:text-5xl font-bold font-mono text-white mb-4">
             Proven Results
           </h2>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
             Real metrics from enterprise Azure Sentinel optimizations.
           </p>
         </motion.div>
@@ -59,7 +56,7 @@ export default function CaseStudies() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="glass rounded-xl border border-white/10 p-8 text-center hover:border-[#45A29E]/50 transition-colors group"
+                className="bg-slate-900/50 backdrop-blur-md rounded-xl border border-slate-800 p-8 text-center hover:border-red-500/50 transition-colors group shadow-xl"
               >
                 <div className={`${study.color} mb-4 flex justify-center`}>
                   <Icon className="h-12 w-12 group-hover:scale-110 transition-transform" />

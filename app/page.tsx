@@ -13,7 +13,7 @@ import BackToTop from "./components/BackToTop";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-slate-950">
       <Navbar />
       <Hero />
       <TrustBar />

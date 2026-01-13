@@ -52,7 +52,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 relative">
+    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 relative bg-slate-950">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -64,7 +64,7 @@ export default function ContactForm() {
           <h2 className="text-4xl md:text-5xl font-bold font-mono text-white mb-4">
             Get Started
           </h2>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
             Ready to optimize your Azure Sentinel costs? Book a free consultation.
           </p>
         </motion.div>
@@ -74,7 +74,7 @@ export default function ContactForm() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="glass rounded-xl border border-white/10 p-8 md:p-12"
+          className="bg-slate-900/50 backdrop-blur-md rounded-xl border border-slate-800 p-8 md:p-12 shadow-2xl"
         >
           {isSuccess ? (
             <motion.div
@@ -82,7 +82,7 @@ export default function ContactForm() {
               animate={{ opacity: 1, scale: 1 }}
               className="text-center py-8"
             >
-              <CheckCircle2 className="h-16 w-16 text-[#14B8A6] mx-auto mb-4" />
+              <CheckCircle2 className="h-16 w-16 text-green-500 mx-auto mb-4" />
               <h3 className="text-2xl font-bold font-mono text-white mb-2">
                 Thank You!
               </h3>
@@ -109,7 +109,7 @@ export default function ContactForm() {
                       setFormData({ ...formData, name: e.target.value })
                     }
                     disabled={isLoading}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#14B8A6] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="John Doe"
                   />
                 </div>
@@ -131,7 +131,7 @@ export default function ContactForm() {
                         setFormData({ ...formData, email: e.target.value })
                       }
                       disabled={isLoading}
-                      className="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#14B8A6] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full bg-slate-900 border border-slate-800 rounded-lg pl-10 pr-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                       placeholder="john@company.com"
                     />
                   </div>
@@ -154,7 +154,7 @@ export default function ContactForm() {
                       setFormData({ ...formData, company: e.target.value })
                     }
                     disabled={isLoading}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#14B8A6] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-slate-900 border border-slate-800 rounded-lg pl-10 pr-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="Your Company Ltd"
                   />
                 </div>
@@ -177,7 +177,7 @@ export default function ContactForm() {
                       setFormData({ ...formData, message: e.target.value })
                     }
                     disabled={isLoading}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#14B8A6] transition-colors resize-none disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-slate-900 border border-slate-800 rounded-lg pl-10 pr-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="Tell us about your Azure Sentinel setup and cost concerns..."
                   />
                 </div>
@@ -187,7 +187,7 @@ export default function ContactForm() {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="flex items-center gap-2 text-[#EF4444] text-sm bg-[#EF4444]/10 border border-[#EF4444]/20 rounded-lg p-3"
+                  className="flex items-center gap-2 text-red-500 text-sm bg-red-500/10 border border-red-500/20 rounded-lg p-3"
                 >
                   <AlertCircle className="h-5 w-5 flex-shrink-0" />
                   <span>{error}</span>
@@ -199,7 +199,7 @@ export default function ContactForm() {
                 disabled={isLoading}
                 whileHover={!isLoading ? { scale: 1.02 } : {}}
                 whileTap={!isLoading ? { scale: 0.98 } : {}}
-                className="w-full bg-[#EF4444] hover:bg-[#dc2626] disabled:bg-[#EF4444]/50 disabled:cursor-not-allowed text-white px-8 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 glow-red"
+                className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 disabled:from-red-500/50 disabled:to-red-600/50 disabled:cursor-not-allowed text-white px-8 py-4 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-500/50"
               >
                 {isLoading ? (
                   <>
